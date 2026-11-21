@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Student Laptop Finder</title>
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="bg-page text-main min-h-screen flex flex-col">
+  <script>
+    // fetch() and modules do not work when a page is opened as a file
+    if (location.protocol === "file:") document.body.insertAdjacentHTML("afterbegin", "<p class='bg-red-600 text-white p-3 text-center'>Please open this site with Live Server (http://...), not by double-clicking the file.</p>");
+  </script>
+  <header id="header" class="bg-card border-b-2 border-accent"></header>
+  <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-1">
+    <section class="grid md:grid-cols-2 gap-6 items-center py-6">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-4">Find the Right Laptop for Your <span class="text-accent">Studies</span></h1>
+        <p class="mb-6 max-w-lg">Student Laptop Finder helps you browse, search, and filter laptops, check full specifications, save your favorites, and compare up to four laptops side by side.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="laptops.html" class="btn">Browse Laptops →</a>
+          <a href="compare.html" class="btn-line">Compare Laptops</a>
+        </div>
+      </div>
+      <img src="assets/hero.png" alt="A laptop" class="w-full" style="border-radius:25px;">
+    </section>
+
+    <section class="grid gap-4 sm:grid-cols-3 mb-10">
+      <div class="card flex items-center gap-4"><span class="text-accent text-3xl">💻</span><div><p id="statCount" class="text-3xl font-bold">...</p><p class="opacity-70">Total Laptops</p></div></div>
+      <div class="card flex items-center gap-4"><span class="text-accent text-3xl">🏷️</span><div><p id="statLowest" class="text-3xl font-bold">...</p><p class="opacity-70">Lowest Price</p></div></div>
+      <div class="card flex items-center gap-4"><span class="text-accent text-3xl">❤️</span><div><p id="statFav" class="text-3xl font-bold">0</p><p class="opacity-70">Saved Favorites</p></div></div>
+    </section>
+
+    <h2 class="text-2xl font-bold mb-4 border-l-4 border-accent pl-3">Explore the App</h2>
+    <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-10">
+      <a href="laptops.html" class="card"><h3 class="font-bold text-lg">Browse Laptops</h3><p class="text-sm opacity-70">Search, filter, and sort all laptops.</p></a>
+      <a href="laptops.html" class="card"><h3 class="font-bold text-lg">View Details</h3><p class="text-sm opacity-70">Open any laptop to see its full specifications.</p></a>
+      <a href="favorites.html" class="card"><h3 class="font-bold text-lg">My Favorites</h3><p class="text-sm opacity-70">Manage your saved laptops.</p></a>
+      <a href="compare.html" class="card"><h3 class="font-bold text-lg">Compare Laptops</h3><p class="text-sm opacity-70">Compare 2–4 favorites side by side.</p></a>
+    </section>
+
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-bold border-l-4 border-accent pl-3">Featured Laptops</h2>
+      <a href="laptops.html" class="text-accent font-semibold">View all →</a>
+    </div>
+    <section id="featured" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"></section>
+  </main>
+  <footer id="footer" class="bg-card border-t border-line"></footer>
+  <script type="module" src="src/js/home.js"></script>
+</body>
+</html>

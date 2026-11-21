@@ -1,0 +1,13 @@
+{
+  "name": "laptop-finder",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "^4.3.5"
+  }
+}

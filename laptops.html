@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laptops - Student Laptop Finder</title>
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="bg-page text-main min-h-screen flex flex-col">
+  <script>
+    // fetch() and modules do not work when a page is opened as a file
+    if (location.protocol === "file:") document.body.insertAdjacentHTML("afterbegin", "<p class='bg-red-600 text-white p-3 text-center'>Please open this site with Live Server (http://...), not by double-clicking the file.</p>");
+  </script>
+  <header id="header" class="bg-card border-b-2 border-accent"></header>
+  <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-1">
+    <h1 class="text-3xl font-bold mb-1 border-l-4 border-accent pl-3">Laptops</h1>
+    <p class="mb-4 opacity-70 pl-4">Search, filter and sort all laptops.</p>
+    <section class="card grid gap-3 sm:grid-cols-2 lg:grid-cols-5 mb-4">
+      <input id="search" type="text" placeholder="Search name or brand" class="field">
+      <select id="category" class="field">
+        <option value="all">All categories</option>
+        <option value="ultrabook">Ultrabook</option>
+        <option value="gaming">Gaming</option>
+        <option value="2-in-1">2-in-1</option>
+        <option value="creator">Creator</option>
+        <option value="budget">Budget</option>
+      </select>
+      <input id="maxPrice" type="number" min="0" placeholder="Max price ($)" class="field">
+      <select id="minRam" class="field">
+        <option value="0">Any RAM</option>
+        <option value="8">8 GB or more</option>
+        <option value="16">16 GB or more</option>
+        <option value="32">32 GB or more</option>
+      </select>
+      <select id="sort" class="field">
+        <option value="default">Sort by...</option>
+        <option value="price-asc">Price: low to high</option>
+        <option value="price-desc">Price: high to low</option>
+        <option value="battery-desc">Battery: longest first</option>
+        <option value="battery-asc">Battery: shortest first</option>
+        <option value="weight-asc">Weight: lightest first</option>
+        <option value="weight-desc">Weight: heaviest first</option>
+      </select>
+    </section>
+    <p id="count" class="mb-4 font-semibold"></p>
+    <section id="list" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></section>
+  </main>
+  <footer id="footer" class="bg-card border-t border-line"></footer>
+  <script type="module" src="src/js/laptops.js"></script>
+</body>
+</html>

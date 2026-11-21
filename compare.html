@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare - Student Laptop Finder</title>
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="bg-page text-main min-h-screen flex flex-col">
+  <script>
+    // fetch() and modules do not work when a page is opened as a file
+    if (location.protocol === "file:") document.body.insertAdjacentHTML("afterbegin", "<p class='bg-red-600 text-white p-3 text-center'>Please open this site with Live Server (http://...), not by double-clicking the file.</p>");
+  </script>
+  <header id="header" class="bg-card border-b-2 border-accent"></header>
+  <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-1">
+    <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+      <div>
+        <h1 class="text-3xl font-bold mb-1 border-l-4 border-accent pl-3">Compare Laptops</h1>
+        <p class="opacity-70 pl-4">Choose 2 to 4 favorites. The best value in each row is highlighted.</p>
+      </div>
+      <p id="compareInfo" class="card py-2 px-4 text-sm">Comparing 0 laptops (2 – 4 allowed)</p>
+    </div>
+    <section id="picker" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-2"></section>
+    <p id="message" class="font-semibold mb-4 min-h-6"></p>
+    <section id="tableBox" class="card overflow-x-auto"></section>
+  </main>
+  <footer id="footer" class="bg-card border-t border-line"></footer>
+  <script type="module" src="src/js/comparePage.js"></script>
+</body>
+</html>
