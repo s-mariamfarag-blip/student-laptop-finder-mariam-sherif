@@ -11,7 +11,7 @@
     // fetch() and modules do not work when a page is opened as a file
     if (location.protocol === "file:") document.body.insertAdjacentHTML("afterbegin", "<p class='bg-red-600 text-white p-3 text-center'>Please open this site with Live Server (http://...), not by double-clicking the file.</p>");
   </script>
-  <header id="header" class="bg-card border-b-2 border-accent"></header>
+  <header id="header" class="bg-card border-b border-line"></header>
   <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-1">
     <h1 class="text-3xl font-bold mb-1 border-l-4 border-accent pl-3">Laptops</h1>
     <p class="mb-4 opacity-70 pl-4">Search, filter and sort all laptops.</p>
@@ -25,7 +25,7 @@
         <option value="creator">Creator</option>
         <option value="budget">Budget</option>
       </select>
-      <input id="maxPrice" type="number" min="0" placeholder="Max price ($)" class="field">
+      <input id="maxPrice" type="number" min="0" placeholder="Maximum price (EGP)" class="field">
       <select id="minRam" class="field">
         <option value="0">Any RAM</option>
         <option value="8">8 GB or more</option>
