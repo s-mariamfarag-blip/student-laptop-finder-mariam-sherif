@@ -32,12 +32,9 @@ export const icon = (name, size = "w-5 h-5") => {
 };
 
 // ----- small helpers -----
-export const formatPrice = (n) =>
-  new Intl.NumberFormat("en-EG", {
-    style: "currency",
-    currency: "EGP",
-    maximumFractionDigits: 0,
-  }).format(n);
+// Always shows "EGP 65,000". It does not depend on the browser's locale,
+// so the currency sign can never turn into "$".
+export const formatPrice = (n) => "EGP " + Math.round(n).toLocaleString("en-US");
 
 export const showMessage = (box, text) => {
   box.innerHTML = `<p class="card text-center col-span-full">${text}</p>`;
