@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
 
-/* Battery Saver uses a calm green palette; Performance uses a dark, energetic orange. */
+
 @theme {
   --color-battery-bg: #f3f7f1;
   --color-battery-card: #ffffff;
@@ -20,7 +20,7 @@
   --color-perf-besttext: #ffedd5;
 }
 
-/* Battery Saver Mode is the default. */
+
 :root {
   --page: var(--color-battery-bg);
   --card: var(--color-battery-card);
@@ -31,7 +31,7 @@
   --besttext: var(--color-battery-besttext);
 }
 
-/* Set data-theme="performance" on the page root to enable Performance Mode. */
+
 [data-theme="performance"] {
   --page: var(--color-perf-bg);
   --card: var(--color-perf-card);
