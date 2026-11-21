@@ -32,7 +32,12 @@ export const icon = (name, size = "w-5 h-5") => {
 };
 
 // ----- small helpers -----
-export const formatPrice = (n) => "$" + n.toLocaleString();
+export const formatPrice = (n) =>
+  new Intl.NumberFormat("en-EG", {
+    style: "currency",
+    currency: "EGP",
+    maximumFractionDigits: 0,
+  }).format(n);
 
 export const showMessage = (box, text) => {
   box.innerHTML = `<p class="card text-center col-span-full">${text}</p>`;
@@ -40,11 +45,11 @@ export const showMessage = (box, text) => {
 
 // color of the category badge
 const categoryColors = {
-  ultrabook: "bg-sky-700",
-  gaming: "bg-orange-700",
+  ultrabook: "bg-slate-600",
+  gaming: "bg-amber-700",
   "2-in-1": "bg-teal-700",
-  creator: "bg-pink-700",
-  budget: "bg-violet-700",
+  creator: "bg-indigo-700",
+  budget: "bg-stone-600",
 };
 export const categoryClass = (category) => categoryColors[category] || "bg-gray-700";
 
@@ -109,7 +114,7 @@ export function makeCard(laptop, mode) {
           ${spec("weight", laptop.weightKg + " kg")}
         </div>
         <div class="mt-auto pt-4 flex gap-2">
-          <a href="details.html?id=${id}" class="${detailsClass} flex-1">View Details ${icon("arrow", "w-4 h-4")}</a>
+          <a href="details.html?id=${encodeURIComponent(id)}" class="${detailsClass} flex-1">View Details ${icon("arrow", "w-4 h-4")}</a>
           ${lastButton}
         </div>
       </div>
@@ -142,7 +147,7 @@ export function listenFavButtons(box, onChange) {
 export function applyTheme(name) {
   const performance = name === "performance";
   document.documentElement.dataset.theme = name;
-  document.getElementById("themeLabel").textContent = performance ? "Performance Mode" : "Battery Saver Mode";
+  document.getElementById("themeLabel").textContent = performance ? "Dark Mode" : "Light Mode";
   document.getElementById("themeKnob").classList.toggle("translate-x-5", performance);
 }
 

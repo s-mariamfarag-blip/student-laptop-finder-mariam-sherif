@@ -7,7 +7,8 @@ import { addToCompare } from "./storage.js";
 async function start() {
   setupHeader();
   const box = document.getElementById("detail");
-  const id = Number(new URLSearchParams(window.location.search).get("id"));
+  const params = new URLSearchParams(window.location.search);
+  const id = Number(params.get("id"));
 
   const laptops = await getLaptops();
   if (!laptops) {
