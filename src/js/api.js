@@ -1,4 +1,4 @@
-// api.js - loads the laptop data from the JSON file
+
 
 export async function getLaptops() {
   try {
@@ -7,6 +7,6 @@ export async function getLaptops() {
     return await response.json();
   } catch (error) {
     console.log(error);
-    return null; // the page shows an error message when this is null
+    return null; 
   }
 }
