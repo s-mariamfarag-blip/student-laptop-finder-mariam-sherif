@@ -1,8 +1,6 @@
-// compare.js - builds the comparison table and finds the best values
-
 import { formatPrice, icon, categoryClass } from "./ui.js";
 
-// best: "low" = lowest value wins, "high" = highest value wins, "none" = no winner
+
 export const rows = [
   { label: "Price", key: "price", icon: "tag", best: "low", badge: "Best Price", show: (v) => formatPrice(v) },
   { label: "CPU", key: "cpu", icon: "cpu", best: "none", show: (v) => v },
@@ -14,7 +12,7 @@ export const rows = [
   { label: "Category", key: "category", icon: "layers", best: "none", show: (v) => v },
 ];
 
-// Finds the best number of one row (lowest or highest)
+
 export const bestValue = (list, key, rule) => {
   const values = list.map((laptop) => laptop[key]);
   return rule === "low" ? Math.min(...values) : Math.max(...values);
@@ -35,7 +33,7 @@ export function makeCompareTable(list) {
 
   const body = rows
     .map((row) => {
-      // best value of this row. If all laptops have the same value, nobody wins.
+     
       const allSame = list.every((l) => l[row.key] === list[0][row.key]);
       const best = row.best === "none" || allSame ? null : bestValue(list, row.key, row.best);
 
@@ -49,7 +47,7 @@ export function makeCompareTable(list) {
           if (winner) {
             content += ` <span class="ml-2 inline-flex items-center gap-1 text-sm">${icon("crown", "w-4 h-4")}${row.badge}</span>`;
           }
-          // the winner cell gets a green background
+          
           const style = winner ? "bg-best text-besttext font-bold" : row.key === "price" ? "text-accent font-bold text-lg" : "";
           return `<td class="p-3 border-t border-l border-line ${style}">${content}</td>`;
         })
