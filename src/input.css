@@ -1,26 +1,26 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/forms";
 
-/* A restrained neutral palette for a clean student project interface. */
+/* Battery Saver uses a calm green palette; Performance uses a dark, energetic orange. */
 @theme {
-  --color-battery-bg: #f5f5f2;
+  --color-battery-bg: #f3f7f1;
   --color-battery-card: #ffffff;
-  --color-battery-text: #263238;
-  --color-battery-line: #d9dedb;
-  --color-battery-accent: #496b68;
-  --color-battery-best: #e4eee9;
-  --color-battery-besttext: #294c43;
+  --color-battery-text: #1f2933;
+  --color-battery-line: #d5dfd6;
+  --color-battery-accent: #28745b;
+  --color-battery-best: #e2f1e8;
+  --color-battery-besttext: #174b39;
 
-  --color-perf-bg: #202729;
-  --color-perf-card: #2a3335;
-  --color-perf-text: #edf1ef;
-  --color-perf-line: #465254;
-  --color-perf-accent: #a6c0b8;
-  --color-perf-best: #344e46;
-  --color-perf-besttext: #e1eee8;
+  --color-perf-bg: #171a1f;
+  --color-perf-card: #232831;
+  --color-perf-text: #f3f4f6;
+  --color-perf-line: #414955;
+  --color-perf-accent: #c2410c;
+  --color-perf-best: #49301f;
+  --color-perf-besttext: #ffedd5;
 }
 
-/* Light mode is the default. */
+/* Battery Saver Mode is the default. */
 :root {
   --page: var(--color-battery-bg);
   --card: var(--color-battery-card);
@@ -30,6 +30,8 @@
   --best: var(--color-battery-best);
   --besttext: var(--color-battery-besttext);
 }
+
+/* Set data-theme="performance" on the page root to enable Performance Mode. */
 [data-theme="performance"] {
   --page: var(--color-perf-bg);
   --card: var(--color-perf-card);
@@ -52,30 +54,35 @@
 
 @layer base {
   body {
-    @apply antialiased;
+    @apply bg-page text-main antialiased transition-colors duration-200;
   }
-  a, button, input, select {
+
+  a,
+  button,
+  input,
+  select {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-card text-main border border-line rounded-lg p-4 shadow-sm transition duration-200;
+    @apply rounded-lg border border-line bg-card p-4 text-main shadow-sm transition duration-200 hover:shadow-md;
   }
-  .card:hover {
-    @apply shadow-md;
-  }
+
   .btn {
-    @apply bg-accent text-white border border-accent rounded-md px-3 py-2 text-sm font-semibold cursor-pointer inline-flex items-center justify-center gap-2 transition duration-200 hover:opacity-90;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-accent bg-accent px-3 py-2 text-sm font-semibold text-white transition duration-200 hover:opacity-90;
   }
+
   .btn-line {
-    @apply text-main border border-line rounded-md px-3 py-2 text-sm font-semibold cursor-pointer inline-flex items-center justify-center gap-2 transition duration-200 hover:bg-accent hover:text-white hover:border-accent;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-main transition duration-200 hover:bg-accent hover:text-white;
   }
+
   .btn-red {
-    @apply text-red-700 border border-red-300 rounded-md px-3 py-2 text-sm font-semibold cursor-pointer inline-flex items-center justify-center gap-2 transition duration-200 hover:bg-red-700 hover:text-white;
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border border-red-300 px-3 py-2 text-sm font-semibold text-red-700 transition duration-200 hover:bg-red-700 hover:text-white;
   }
+
   .field {
-    @apply bg-card text-main border border-line rounded-md px-3 py-2 w-full transition focus:ring-2 focus:ring-accent focus:border-accent;
+    @apply w-full rounded-md border border-line bg-card px-3 py-2 text-main transition focus:border-accent focus:ring-2 focus:ring-accent;
   }
 }
