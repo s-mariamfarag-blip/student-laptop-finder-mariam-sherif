@@ -11,7 +11,7 @@
     // fetch() and modules do not work when a page is opened as a file
     if (location.protocol === "file:") document.body.insertAdjacentHTML("afterbegin", "<p class='bg-red-600 text-white p-3 text-center'>Please open this site with Live Server (http://...), not by double-clicking the file.</p>");
   </script>
-  <header id="header" class="bg-card border-b-2 border-accent"></header>
+  <header id="header" class="bg-card border-b border-line"></header>
   <main class="max-w-6xl w-full mx-auto px-4 py-6 flex-1">
     <section class="grid md:grid-cols-2 gap-6 items-center py-6">
       <div>
@@ -22,13 +22,13 @@
           <a href="compare.html" class="btn-line">Compare Laptops</a>
         </div>
       </div>
-      <img src="assets/hero.png" alt="A laptop" class="w-full" style="border-radius:25px;">
+      <img src="assets/hero.jpg" alt="A laptop" class="w-full rounded-lg">
     </section>
 
     <section class="grid gap-4 sm:grid-cols-3 mb-10">
-      <div class="card flex items-center gap-4"><span class="text-accent text-3xl">💻</span><div><p id="statCount" class="text-3xl font-bold">...</p><p class="opacity-70">Total Laptops</p></div></div>
-      <div class="card flex items-center gap-4"><span class="text-accent text-3xl">🏷️</span><div><p id="statLowest" class="text-3xl font-bold">...</p><p class="opacity-70">Lowest Price</p></div></div>
-      <div class="card flex items-center gap-4"><span class="text-accent text-3xl">❤️</span><div><p id="statFav" class="text-3xl font-bold">0</p><p class="opacity-70">Saved Favorites</p></div></div>
+      <div class="card flex items-center gap-4"><span class="text-accent text-xl font-semibold">01</span><div><p id="statCount" class="text-3xl font-bold">...</p><p class="opacity-70">Total Laptops</p></div></div>
+      <div class="card flex items-center gap-4"><span class="text-accent text-xl font-semibold">02</span><div><p id="statLowest" class="text-3xl font-bold">...</p><p class="opacity-70">Lowest Price</p></div></div>
+      <div class="card flex items-center gap-4"><span class="text-accent text-xl font-semibold">03</span><div><p id="statFav" class="text-3xl font-bold">0</p><p class="opacity-70">Saved Favorites</p></div></div>
     </section>
 
     <h2 class="text-2xl font-bold mb-4 border-l-4 border-accent pl-3">Explore the App</h2>
