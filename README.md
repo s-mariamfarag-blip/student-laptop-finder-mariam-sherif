@@ -1,28 +1,52 @@
 # Student Laptop Finder
 
-A simple website to browse, filter, save and compare laptops.
-Built with JavaScript (ES modules) and Tailwind CSS 4 (installed locally with npm).
+A small web application that helps students browse laptop models, review specifications, save favorites, and compare selected laptops.
 
-GitHub repo: [https://github.com/s-mariamfarag-blip/student-laptop-finder-mariam-sherif](https://github.com/s-mariamfarag-blip/student-laptop-finder-mariam-sherif) 
+Repository: https://github.com/s-mariamfarag-blip/student-laptop-finder-mariam-sherif
+
+The project uses HTML, JavaScript ES modules, JSON, LocalStorage, and Tailwind CSS 4. Laptop prices are displayed in Egyptian pounds (EGP). The listed prices are approximate example prices for the project and should not be treated as live store quotations.
 
 ## Install and build
-```
+
+```bash
 npm install
 npm run build
 ```
-`npm run build` makes `dist/output.css` from `src/input.css`.
-While you work, use `npm run watch` to rebuild automatically.
+
+To rebuild the CSS automatically while editing:
+
+```bash
+npm run watch
+```
 
 ## Run
-Open the folder in VS Code and start **Live Server** on `index.html`.
-(`fetch()` and modules do not work if you double click the HTML files.)
 
-## Files
-- `index.html, laptops.html, details.html, favorites.html, compare.html` - the 5 pages
-- `src/input.css` - Tailwind setup, 2 themes (`@theme`), forms plugin (`@plugin`), component classes (`.card`, `.btn`, `.btn-line`, `.btn-red`, `.field`)
-- `src/js/api.js` - loads the JSON with fetch
-- `src/js/storage.js` - favorites, compare list and theme in localStorage
-- `src/js/ui.js` - icons, card, skeleton, header, footer and theme
-- `src/js/compare.js` - comparison table and best values
-- `src/js/home.js, laptops.js, details.js, favorites.js, comparePage.js` - one file per page
-- `data/laptops.json` - 21 laptops, `assets/` - laptop images (SVG drawings; you can replace them with real photos)
+Open the project folder in VS Code and start Live Server from `index.html`. A local server is required because the application loads `data/laptops.json` with `fetch()`.
+
+## Pages
+
+- `index.html` - home page and laptop statistics
+- `laptops.html` - laptop catalogue, search, filters, and sorting
+- `details.html?id=1` - details for a selected laptop
+- `favorites.html` - saved laptops and price summary
+- `compare.html` - compare two to four selected laptops
+
+## Main files
+
+- `data/laptops.json` - laptop information and approximate EGP prices
+- `src/js/api.js` - loads the JSON data
+- `src/js/storage.js` - manages favorites, comparison choices, and theme using LocalStorage
+- `src/js/ui.js` - shared interface elements, laptop cards, icons, and theme controls
+- `src/js/compare.js` - comparison table and best-value indicators
+- `src/js/home.js`, `laptops.js`, `details.js`, `favorites.js`, and `comparePage.js` - page-specific behavior
+- `src/input.css` - Tailwind CSS setup, themes, and reusable component styles
+- `dist/output.css` - generated stylesheet
+
+## Features
+
+- Search laptops by name or brand
+- Filter by category, maximum price, and RAM
+- Sort by price, battery life, and weight
+- Save and remove favorite laptops
+- Compare up to four laptops
+- Light and dark themes
