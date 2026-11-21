@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+/* The two themes: colors are defined here with @theme */
+@theme {
+  --color-battery-bg: #f0fdf4;
+  --color-battery-card: #ffffff;
+  --color-battery-text: #14532d;
+  --color-battery-line: #bbf7d0;
+  --color-battery-accent: #15803d;
+  --color-battery-best: #bbf7d0;
+  --color-battery-besttext: #14532d;
+
+  --color-perf-bg: #0b1220;
+  --color-perf-card: #111a2e;
+  --color-perf-text: #f1f5f9;
+  --color-perf-line: #26324a;
+  --color-perf-accent: #ea580c;
+  --color-perf-best: #14532d;
+  --color-perf-besttext: #bbf7d0;
+}
+
+/* Battery Saver is the default. data-theme="performance" swaps the variables. */
+:root {
+  --page: var(--color-battery-bg);
+  --card: var(--color-battery-card);
+  --main: var(--color-battery-text);
+  --line: var(--color-battery-line);
+  --accent: var(--color-battery-accent);
+  --best: var(--color-battery-best);
+  --besttext: var(--color-battery-besttext);
+}
+[data-theme="performance"] {
+  --page: var(--color-perf-bg);
+  --card: var(--color-perf-card);
+  --main: var(--color-perf-text);
+  --line: var(--color-perf-line);
+  --accent: var(--color-perf-accent);
+  --best: var(--color-perf-best);
+  --besttext: var(--color-perf-besttext);
+}
+
+/* Short names used in the HTML: bg-page, bg-card, text-main, text-accent ... */
+@theme inline {
+  --color-page: var(--page);
+  --color-card: var(--card);
+  --color-main: var(--main);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-best: var(--best);
+  --color-besttext: var(--besttext);
+}
+
+/* Reusable component classes */
+@layer components {
+  .card {
+    @apply bg-card text-main border border-line rounded-xl p-4 shadow transition duration-200 hover:-translate-y-1 hover:shadow-lg;
+  }
+  .btn {
+    @apply bg-accent text-white border border-accent rounded-lg px-3 py-2 text-sm font-semibold cursor-pointer inline-flex items-center justify-center gap-2 transition duration-200 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-main;
+  }
+  .btn-line {
+    @apply text-main border border-main rounded-lg px-3 py-2 text-sm font-semibold cursor-pointer inline-flex items-center justify-center gap-2 transition duration-200 hover:bg-accent hover:text-white hover:border-accent focus:outline-none focus:ring-2 focus:ring-accent;
+  }
+  .btn-red {
+    @apply text-red-500 border border-red-500 rounded-lg px-3 py-2 text-sm font-semibold cursor-pointer inline-flex items-center justify-center gap-2 transition duration-200 hover:bg-red-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500;
+  }
+  .field {
+    @apply bg-card text-main border border-line rounded-lg px-3 py-2 w-full transition focus:ring-2 focus:ring-accent focus:border-accent;
+  }
+}
