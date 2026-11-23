@@ -1,8 +1,5 @@
-// ui.js - helpers that show things on the page (icons, cards, header, theme)
-
 import { isFavorite, toggleFavorite, getFavorites, getTheme, saveTheme } from "./storage.js";
 
-// ----- icons (small SVG drawings) -----
 const paths = {
   laptop: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/>',
   home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
@@ -31,26 +28,21 @@ export const icon = (name, size = "w-5 h-5") => {
   return `<svg class="${size} shrink-0" viewBox="0 0 24 24" fill="${filled ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${paths[key]}</svg>`;
 };
 
-// ----- small helpers -----
-// Always shows "EGP 65,000". It does not depend on the browser's locale,
-// so the currency sign can never turn into "$".
-export const formatPrice = (n) => "EGP " + Math.round(n).toLocaleString("en-US");
+export const formatPrice = (n) => "$" + n.toLocaleString();
 
 export const showMessage = (box, text) => {
   box.innerHTML = `<p class="card text-center col-span-full">${text}</p>`;
 };
 
-// color of the category badge
 const categoryColors = {
-  ultrabook: "bg-slate-600",
-  gaming: "bg-amber-700",
+  ultrabook: "bg-sky-700",
+  gaming: "bg-orange-700",
   "2-in-1": "bg-teal-700",
-  creator: "bg-indigo-700",
-  budget: "bg-stone-600",
+  creator: "bg-pink-700",
+  budget: "bg-violet-700",
 };
 export const categoryClass = (category) => categoryColors[category] || "bg-gray-700";
 
-// ----- skeleton (same shape as a real card) -----
 const makeSkeleton = () => `
   <div class="card p-0 overflow-hidden animate-pulse">
     <div class="h-44 bg-line"></div>
@@ -66,8 +58,7 @@ export function showSkeletons(box, count = 6) {
   box.innerHTML = Array.from({ length: count }, makeSkeleton).join("");
 }
 
-// ----- favorite buttons -----
-// kind: "heart" (small round button), "remove" (red button), "text" (normal button)
+
 export function favInner(id, kind) {
   const saved = isFavorite(id);
   if (kind === "heart") return icon(saved ? "heartFill" : "heart");
@@ -78,8 +69,7 @@ export function favInner(id, kind) {
 const spec = (name, text) =>
   `<span class="flex items-center gap-2"><span class="text-accent">${icon(name, "w-4 h-4")}</span>${text}</span>`;
 
-// One laptop card. Used on the home, catalogue and favorites pages.
-// mode "remove" adds a red Remove button (favorites page)
+
 export function makeCard(laptop, mode) {
   const id = laptop.id;
   const lastButton =
@@ -111,7 +101,7 @@ export function makeCard(laptop, mode) {
           ${spec("weight", laptop.weightKg + " kg")}
         </div>
         <div class="mt-auto pt-4 flex gap-2">
-          <a href="details.html?id=${encodeURIComponent(id)}" class="${detailsClass} flex-1">View Details ${icon("arrow", "w-4 h-4")}</a>
+          <a href="details.html?id=${id}" class="${detailsClass} flex-1">View Details ${icon("arrow", "w-4 h-4")}</a>
           ${lastButton}
         </div>
       </div>
@@ -123,14 +113,14 @@ export function updateFavCount() {
   if (span) span.textContent = getFavorites().length;
 }
 
-// A click on any .favBtn inside the box saves or removes that laptop
+
 export function listenFavButtons(box, onChange) {
   box.addEventListener("click", (event) => {
     const button = event.target.closest(".favBtn");
     if (!button) return;
     const id = Number(button.dataset.id);
     toggleFavorite(id);
-    // update every button of this laptop (heart, remove, text)
+    
     document.querySelectorAll(`.favBtn[data-id="${id}"]`).forEach((b) => {
       b.innerHTML = favInner(id, b.dataset.kind);
     });
@@ -139,12 +129,11 @@ export function listenFavButtons(box, onChange) {
   });
 }
 
-// ----- theme -----
-// Puts the theme name on the <html> tag. This is also how the theme is restored after a reload.
+
 export function applyTheme(name) {
   const performance = name === "performance";
   document.documentElement.dataset.theme = name;
-  document.getElementById("themeLabel").textContent = performance ? "Dark Mode" : "Light Mode";
+  document.getElementById("themeLabel").textContent = performance ? "Performance Mode" : "Battery Saver Mode";
   document.getElementById("themeKnob").classList.toggle("translate-x-5", performance);
 }
 
@@ -155,7 +144,6 @@ const pages = [
   ["compare.html", "Compare", "scale"],
 ];
 
-// Runs on every page: builds the header + footer, restores the theme, menu button
 export function setupHeader() {
   const current = location.pathname.split("/").pop() || "index.html";
   const links = pages

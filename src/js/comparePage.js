@@ -1,4 +1,3 @@
-// comparePage.js - choose 2 to 4 favorites and compare them
 
 import { getLaptops } from "./api.js";
 import { setupHeader, showMessage, formatPrice } from "./ui.js";
@@ -51,7 +50,7 @@ async function start() {
     let chosen = getCompareIds();
     if (box.checked) {
       if (chosen.length >= 4) {
-        box.checked = false; // block the fifth laptop
+        box.checked = false; 
         message.textContent = "You can compare only 4 laptops. Uncheck one first.";
         return;
       }

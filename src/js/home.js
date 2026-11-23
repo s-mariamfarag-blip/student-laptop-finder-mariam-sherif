@@ -1,5 +1,3 @@
-// home.js - the home page (statistics + featured laptops)
-
 import { getLaptops } from "./api.js";
 import { setupHeader, formatPrice, makeCard, listenFavButtons, showSkeletons, showMessage } from "./ui.js";
 import { getFavorites } from "./storage.js";
@@ -23,7 +21,6 @@ async function start() {
     showMessage(featured, "Sorry, the laptop data could not be loaded. Run the site with a local server (Live Server).");
     return;
   }
-  // reduce: find the lowest price
   const lowest = laptops.reduce((min, l) => (l.price < min ? l.price : min), Infinity);
 
   document.getElementById("statCount").textContent = laptops.length;

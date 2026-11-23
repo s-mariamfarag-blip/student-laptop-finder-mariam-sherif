@@ -1,8 +1,5 @@
-// laptops.js - the catalogue page (search, filters, sorting)
-
 import { getLaptops } from "./api.js";
 import { makeCard, showSkeletons, showMessage, setupHeader, listenFavButtons } from "./ui.js";
-
 const list = document.getElementById("list");
 const count = document.getElementById("count");
 const searchBox = document.getElementById("search");
@@ -12,8 +9,6 @@ const ramBox = document.getElementById("minRam");
 const sortBox = document.getElementById("sort");
 
 let allLaptops = [];
-
-// every sort option has its own compare function
 const sorters = {
   default: (a, b) => a.id - b.id,
   "price-asc": (a, b) => a.price - b.price,
@@ -35,8 +30,6 @@ function showLaptops() {
     const matchCategory = category === "all" || l.category === category;
     return matchText && matchCategory && l.price <= maxPrice && l.ramGB >= minRam;
   });
-
-  // [...found] makes a copy, so the original array is not changed
   const sorted = [...found].sort(sorters[sortBox.value]);
 
   count.textContent = sorted.length + " laptops found";
@@ -61,7 +54,6 @@ async function start() {
   allLaptops = data;
   showLaptops();
 
-  // "input" runs while typing, "change" runs for dropdowns
   [searchBox, priceBox].forEach((box) => box.addEventListener("input", showLaptops));
   [categoryBox, ramBox, sortBox].forEach((box) => box.addEventListener("change", showLaptops));
 }

@@ -1,5 +1,3 @@
-// storage.js - everything that is saved in localStorage
-
 const read = (key, fallback) => {
   try {
     const text = localStorage.getItem(key);
@@ -10,7 +8,6 @@ const read = (key, fallback) => {
 };
 const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
-// ----- favorites (a list of laptop ids) -----
 export const getFavorites = () => read("favorites", []);
 export const isFavorite = (id) => getFavorites().includes(id);
 
@@ -30,11 +27,9 @@ export function clearFavorites() {
   write("compareIds", []);
 }
 
-// ----- compare (ids picked for the compare page, max 4) -----
 export const getCompareIds = () => read("compareIds", []).filter((id) => getFavorites().includes(id));
 export const saveCompareIds = (ids) => write("compareIds", ids);
 
-// Returns false when 4 laptops are already chosen
 export function addToCompare(id) {
   if (!isFavorite(id)) toggleFavorite(id);
   const ids = getCompareIds();
@@ -45,6 +40,5 @@ export function addToCompare(id) {
   return true;
 }
 
-// ----- theme: "battery" or "performance" -----
 export const getTheme = () => read("theme", "battery");
 export const saveTheme = (name) => write("theme", name);

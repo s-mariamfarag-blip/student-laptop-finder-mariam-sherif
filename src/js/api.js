@@ -1,5 +1,3 @@
-
-
 export async function getLaptops() {
   try {
     const response = await fetch("data/laptops.json");

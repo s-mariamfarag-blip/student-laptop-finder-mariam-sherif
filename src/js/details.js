@@ -1,4 +1,3 @@
-// details.js - one laptop, chosen by ?id=7 in the address
 
 import { getLaptops } from "./api.js";
 import { setupHeader, showMessage, formatPrice, favInner, listenFavButtons, updateFavCount, icon, categoryClass } from "./ui.js";
@@ -7,8 +6,7 @@ import { addToCompare } from "./storage.js";
 async function start() {
   setupHeader();
   const box = document.getElementById("detail");
-  const params = new URLSearchParams(window.location.search);
-  const id = Number(params.get("id"));
+  const id = Number(new URLSearchParams(window.location.search).get("id"));
 
   const laptops = await getLaptops();
   if (!laptops) {
@@ -20,8 +18,6 @@ async function start() {
     showMessage(box, "Laptop not found. Please go back to the catalogue and choose one.");
     return;
   }
-
-  // every field of the laptop becomes a table row
   const fields = [
     ["ID", laptop.id, "list"], ["Name", laptop.name, "laptop"], ["Brand", laptop.brand, "layers"],
     ["Category", laptop.category, "layers"], ["Price", formatPrice(laptop.price), "tag"],
